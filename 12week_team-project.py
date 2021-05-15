@@ -1,15 +1,12 @@
-<<<<<<< HEAD
 import pandas as pd
 from bs4 import BeautifulSoup
 from selenium import webdriver
 import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib import font_manager, rc
 
-url = 'https://www.op.gg/'
-=======
-from selenium import webdriver
 
-url = 'https://www.op.gg//'
->>>>>>> 546ec4e87f90095dd7cf4ae27cf54b09c21388c5
+url = 'https://www.op.gg'
 
 driver = webdriver.Chrome('chromedriver')
 driver.get(url)
@@ -17,9 +14,9 @@ driver.implicitly_wait(3)
 
 driver.find_element_by_xpath('/html/body/div[2]/div[1]/ul/li[5]/a').click()
 
+
 data = driver.page_source
 
-<<<<<<< HEAD
 soup = BeautifulSoup(data, 'html.parser')
 
 df = pd.read_html(soup.prettify())[1]
@@ -47,6 +44,15 @@ elif a== '승률':
 
 print(champion)
 print(b)
-=======
-driver.quit()
->>>>>>> 546ec4e87f90095dd7cf4ae27cf54b09c21388c5
+
+
+
+font_name = font_manager.FontProperties(fname="c:/Windows/Fonts/malgun.ttf").get_name()
+
+rc('font', family=font_name, size = 6)
+x=np.arange(len(champion))
+plt.figure(figsize=(20,5))
+plt.bar(x,b)
+plt.xticks(x,champion,rotation='vertical')
+plt.title('LOL 챔피언 %s 순위'%a)
+plt.show()
