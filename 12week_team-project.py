@@ -1,9 +1,15 @@
+<<<<<<< HEAD
 import pandas as pd
 from bs4 import BeautifulSoup
 from selenium import webdriver
 import numpy as np
 
 url = 'https://www.op.gg/'
+=======
+from selenium import webdriver
+
+url = 'https://www.op.gg//'
+>>>>>>> 546ec4e87f90095dd7cf4ae27cf54b09c21388c5
 
 driver = webdriver.Chrome('chromedriver')
 driver.get(url)
@@ -13,6 +19,7 @@ driver.find_element_by_xpath('/html/body/div[2]/div[1]/ul/li[5]/a').click()
 
 data = driver.page_source
 
+<<<<<<< HEAD
 soup = BeautifulSoup(data, 'html.parser')
 
 df = pd.read_html(soup.prettify())[1]
@@ -40,3 +47,6 @@ elif a== '승률':
 
 print(champion)
 print(b)
+=======
+driver.quit()
+>>>>>>> 546ec4e87f90095dd7cf4ae27cf54b09c21388c5
