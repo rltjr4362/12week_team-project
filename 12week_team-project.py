@@ -32,14 +32,24 @@ print(new_df)
 
 champion=list(np.array(new_df.loc[:,"챔피언.1"].tolist()))
 b=list(np.array(new_df.loc[:,a].tolist()))
+
+
+
 if a == '평점':
     for i in b:
         b+=float(i.split(':')[0])
         del b[0]
+
 elif a== '승률':
     for i in b:
-        b+=float(i.split('%')[0])
+        i=i.replace('.','')
+        i=i.replace('%', '')
+        b.append(i)
         del b[0]
+    b= [int(i) for i in b]
+    b = [float(i) for i in b]
+    b = [i/100 for i in b]
+
 
 
 print(champion)
